@@ -1,1 +1,9 @@
-  <h1 class="clock">{{ clock | date:'HH:mm:ss'}}</h1>
+<div class="clock">
+  <clock></clock>
+  <div>
+    <timepicker ng-model="alarmTime"  hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+  </div>
+  <p href="#" ng-click="setAlarm()">set alarm</p>
+</div>
+
+
