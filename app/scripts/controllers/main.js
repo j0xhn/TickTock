@@ -8,10 +8,13 @@
  * Controller of the clockularApp
  */
 angular.module('clockularApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $interval) {
+
+    // ticking clock
+    var tick = function() {
+      $scope.clock = Date.now();
+    }
+    tick();
+    $interval(tick, 1000);
+
   });
