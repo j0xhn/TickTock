@@ -1,9 +1,16 @@
-<div class="clock">
+<div class="tt-clock">
   <clock></clock>
-  <div>
-    <timepicker ng-model="alarmTime"  hour-step="hstep" minute-step="mstep" show-meridian="true"></timepicker>
+  <p class="tt-set-alarm-cta" ng-click="modalOpen = true;">set alarm</p>
+</div>
+
+<div class="tt-modal-backdrop" ng-class="{open:modalOpen}">
+ <div class="tt-modal">
+    <span class="glyphicon glyphicon-remove" ng-click="modalOpen = !modalOpen"></span>
+    <h2>Set Alarm</h2>
+    <timepicker ng-model="alarmTime" class="tt-timepicker"></timepicker>
+    <button class="btn btn-disabled" ng-click="$modalOpen = !modalOpen">Clear</button>
+    <button class="btn btn-success" ng-click="setAlarm();">Set Alarm</button>
   </div>
-  <p href="#" ng-click="setAlarm()">set alarm</p>
 </div>
 
 

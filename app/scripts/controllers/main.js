@@ -9,38 +9,43 @@
  */
 angular.module('clockularApp')
   .controller('MainCtrl', function ($scope, $interval) {
+    var ttActions = {};
+    var ttState = {};
+
+    // sound
+    ttActions.soundAlarm = function() {
+      var audio = new Audio('http://oringz.com/oringz-uploads/sounds-1074-professionals.mp3');
+      audio.play();
+      //$('body').append(audio);
+    };
+
 
     // ticking clock
     var tick = function() {
-      $scope.clock = Date.now();
+      $scope.clock = new Date();
+
+      // if alarm set look for match
+      if($scope.alarmTime){
+        var newClock = new Date($scope.clock);
+        //  QUICK HACK - equalize seconds and milliseconds because of weird rounding
+        //  would need to look into this more to find why it's behaving as such.
+        newClock.setSeconds(0);
+        newClock.setMilliseconds(0);
+        $scope.alarmTime.setSeconds(0);
+        $scope.alarmTime.setMilliseconds(0);
+
+        // play sound and clear alarm when equal
+        if($scope.alarmTime.getTime() === newClock.getTime()) {
+          ttActions.soundAlarm();
+          $scope.alarmTime = null;
+        }
+      }
     }
     tick();
     $interval(tick, 1000);
 
-    // alarm clock setting
-    $scope.mytime = new Date();
+    $scope.setAlarm = function(){
+      $scope.modalOpen = false;
+    }
 
-    $scope.hstep = 1;
-    $scope.mstep = 1;
-
-    $scope.options = {
-      hstep: [1, 2, 3],
-      mstep: [1, 5, 10, 15, 25, 30]
-    };
-
-    $scope.ismeridian = true;
-    $scope.toggleMode = function() {
-      $scope.ismeridian = ! $scope.ismeridian;
-    };
-
-    $scope.update = function() {
-      var d = new Date();
-      d.setHours( 14 );
-      d.setMinutes( 0 );
-      $scope.mytime = d;
-    };
-
-    $scope.clear = function() {
-      $scope.mytime = null;
-    };
   });

@@ -1,22 +1,23 @@
-.clock{
+.tt-clock{
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  margin: 0;
-  @include linearGradient(#009ACD,#82CFFD);
-  h1{
+  margin: auto;
+  height: 55px;
+  width: 402px;
+  text-align: center;
+  color: white;
+  h1 {
     font-size: 50px;
-    text-align: center;
-    color: white;
-    position: absolute;
-    width: 320px;
-    height: 20px;
-    margin: auto;
-    top: 30%;
-    left: 0;
-    right: 0;
+    margin: 0;
+  }
+  .tt-set-alarm-cta{
+    cursor: pointer;
+    text-decoration: underline;
   }
 }
-
+.tt-timepicker{
+  margin: 20px auto;
+}
