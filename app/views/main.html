@@ -1,16 +1,29 @@
-<div class="tt-clock">
-  <clock></clock>
-  <p class="tt-set-alarm-cta" ng-click="modalOpen = true;">set alarm</p>
+<div class="tt-centered-wrapper" ng-class="{alarm: showAlarm}">
+
+  <div class="tt-clock">
+    <clock></clock>
+    <div class="tt-set-alarm-cta">
+      <p ng-click="showModal()" ng-if="!showAlarm && !alarmTime"><span class="glyphicon glyphicon-time"></span> set alarm</p>
+      <p ng-click="resetAlarm()" ng-if="showAlarm">reset</p>
+      <p ng-if="alarmTime">
+        alarm set to <span class="pointer underline" ng-click="showModal()">{{ alarmTime | date:'h:mm a'}}
+        <span class="glyphicon glyphicon-edit"></span>
+      </span>
+    </div>
+  </div>
+
+
+  <div class="tt-modal-backdrop" ng-class="{open:modalOpen}">
+    <div class="tt-modal">
+      <span class="glyphicon glyphicon-remove" ng-click="modalOpen = false;"></span>
+      <h2>Set Alarm</h2>
+      <timepicker ng-model="alarmTime" class="tt-timepicker"></timepicker>
+      <button class="btn btn-disabled" ng-click="resetAlarm()">Clear</button>
+      <button class="btn btn-success" ng-click="setAlarm();">Set Alarm</button>
+    </div>
+  </div>
+
 </div>
 
-<div class="tt-modal-backdrop" ng-class="{open:modalOpen}">
- <div class="tt-modal">
-    <span class="glyphicon glyphicon-remove" ng-click="modalOpen = !modalOpen"></span>
-    <h2>Set Alarm</h2>
-    <timepicker ng-model="alarmTime" class="tt-timepicker"></timepicker>
-    <button class="btn btn-disabled" ng-click="$modalOpen = !modalOpen">Clear</button>
-    <button class="btn btn-success" ng-click="setAlarm();">Set Alarm</button>
-  </div>
-</div>
 
 

@@ -9,7 +9,7 @@
 angular.module('clockularApp')
   .directive('clock', function () {
     return {
-      template: "<h1>{{ clock | date:'hh:mm:ss'}}</h1>",
+      template: "<h1>{{ clock | date:'h:mm'}}</h1><span>{{ clock | date:'a'}}</span>",
       restrict: 'E'
       //link: function postLink(scope, element, attrs) {
       //  element.text('this is the clock directive');

@@ -2,6 +2,11 @@
 $tt-gray: #666;
 $tt-light-gray: #CCC;
 
+// short hand
+.underline  {text-decoration: underline;}
+.pointer    {cursor: pointer;}
+.f10        { font-size: 10px; }
+
 // elements
 .tt-centered-wrapper{
   @include linearGradient(#009ACD,#82CFFD);
@@ -10,6 +15,7 @@ $tt-light-gray: #CCC;
   bottom: 0;
   left: 0;
   right: 0;
+  &.alarm{@include linearGradient(#E21832,#F78C96); }
 }
 
 .tt-modal-backdrop{

@@ -9,43 +9,58 @@
  */
 angular.module('clockularApp')
   .controller('MainCtrl', function ($scope, $interval) {
-    var ttActions = {};
-    var ttState = {};
+    var ttPrivateActions = {};
+    $scope.alarmCTA = "set alarm"
 
     // sound
-    ttActions.soundAlarm = function() {
-      var audio = new Audio('http://oringz.com/oringz-uploads/sounds-1074-professionals.mp3');
+    ttPrivateActions.soundAlarm = function() {
+      var audio = new Audio('http://oringz.com/oringz-uploads/sounds-1065-just-like-that.mp3');
       audio.play();
-      //$('body').append(audio);
     };
 
+    // toggle alarm
+    ttPrivateActions.toggleAlarm = function(){
+      $scope.showAlarm = !$scope.showAlarm;
+    }
 
     // ticking clock
-    var tick = function() {
+    ttPrivateActions.tick = function() {
       $scope.clock = new Date();
-
-      // if alarm set look for match
       if($scope.alarmTime){
-        var newClock = new Date($scope.clock);
         //  QUICK HACK - equalize seconds and milliseconds because of weird rounding
         //  would need to look into this more to find why it's behaving as such.
+        var newClock = new Date($scope.clock);
         newClock.setSeconds(0);
         newClock.setMilliseconds(0);
         $scope.alarmTime.setSeconds(0);
         $scope.alarmTime.setMilliseconds(0);
 
-        // play sound and clear alarm when equal
         if($scope.alarmTime.getTime() === newClock.getTime()) {
-          ttActions.soundAlarm();
+          ttPrivateActions.soundAlarm();
+          ttPrivateActions.toggleAlarm();
           $scope.alarmTime = null;
+          $scope.alarmCTA = 'reset'
         }
       }
     }
-    tick();
-    $interval(tick, 1000);
+
+    // commence the ticking!
+    ttPrivateActions.tick();
+    $interval(ttPrivateActions.tick, 1000);
+
+    // clear alarm
+    $scope.resetAlarm = function() {
+      $scope.showAlarm = false;
+      $scope.alarmTime = null;
+      $scope.modalOpen = false;
+    }
 
     $scope.setAlarm = function(){
       $scope.modalOpen = false;
+    }
+
+    $scope.showModal = function(){
+      $scope.modalOpen = true;
     }
 
   });
