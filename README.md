@@ -8,7 +8,7 @@ when you're trying to not waste so much time on Facebook :)
 
 Run `grunt` for building and `grunt serve` for preview.
 
-## TODO
+### TODO
 - have user input a message that appears on the screen during their alarm
 - change background color according to the time of day
 - clean up timepicker modal - perhaps use a different style, don't much like the way it came pre-packaged
