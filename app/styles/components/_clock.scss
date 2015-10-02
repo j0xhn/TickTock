@@ -8,11 +8,10 @@ clock { display: block; }
   left: 0;
   margin: auto;
   height: 200px;
-  width: 402px;
   text-align: center;
   color: white;
   h1 {
-    font-size: 130px;
+    font-size: 100px;
     margin: 0;
     display: inline-block;
     & + span { font-size: 12px; }
@@ -21,6 +20,11 @@ clock { display: block; }
 
 .tt-timepicker{
   margin: 20px auto;
+  input{ margin: 0 5px; }
+  button.btn{
+    border: 1px solid $tt-light-gray;
+    margin-left: 5px;
+  }
 }
 
 .tt-set-alarm-cta{

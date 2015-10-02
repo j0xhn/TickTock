@@ -1,15 +1,19 @@
 // variables
 $tt-gray: #666;
 $tt-light-gray: #CCC;
+$tt-blue: #009ACD;
 
 // short hand
-.underline  {text-decoration: underline;}
-.pointer    {cursor: pointer;}
+.underline  { text-decoration: underline;}
+.pointer    { cursor: pointer;}
 .f10        { font-size: 10px; }
+.o8         { opacity: .8;}
+.text-gray  { color: $tt-light-gray}
+
 
 // elements
 .tt-centered-wrapper{
-  @include linearGradient(#009ACD,#82CFFD);
+  @include linearGradient($tt-blue, #82CFFD);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -18,6 +22,7 @@ $tt-light-gray: #CCC;
   &.alarm{@include linearGradient(#E21832,#F78C96); }
 }
 
+// modals
 .tt-modal-backdrop{
   z-index: -1;
   opacity: 0;
@@ -43,7 +48,7 @@ $tt-light-gray: #CCC;
     margin: auto;
     top: 0;
     bottom: 0;
-    width: 320px;
+    width: 300px;
     height: 320px;
     left: 0;
     border-radius: 3px;
@@ -58,7 +63,61 @@ $tt-light-gray: #CCC;
     }
   }
 
-  .btn{ outline: none; }
-  .btn-disabled{}
+  // cta options
+  .btn-success {
+    background-color:$tt-blue;
+    border: none;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+  }
+}
+
+// animations
+
+/*
+==============================================
+pulse
+==============================================
+*/
+
+.pulse{
+  animation-name: pulse;
+  -webkit-animation-name: pulse;
+
+  animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+    opacity: 0.7;
+  }
 }
 

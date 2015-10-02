@@ -10,11 +10,10 @@
 angular.module('clockularApp')
   .controller('MainCtrl', function ($scope, $interval) {
     var ttPrivateActions = {};
-    $scope.alarmCTA = "set alarm"
 
     // sound
     ttPrivateActions.soundAlarm = function() {
-      var audio = new Audio('http://oringz.com/oringz-uploads/sounds-1065-just-like-that.mp3');
+      var audio = new Audio('http://www.oringz.com/oringz-uploads/sounds-958-thin.mp3');
       audio.play();
     };
 
@@ -36,10 +35,11 @@ angular.module('clockularApp')
         $scope.alarmTime.setMilliseconds(0);
 
         if($scope.alarmTime.getTime() === newClock.getTime()) {
+          // start immediately and continue sound
           ttPrivateActions.soundAlarm();
+          $scope.soundAlarmPromise = $interval(ttPrivateActions.soundAlarm, 1500);
           ttPrivateActions.toggleAlarm();
           $scope.alarmTime = null;
-          $scope.alarmCTA = 'reset'
         }
       }
     }
@@ -53,6 +53,7 @@ angular.module('clockularApp')
       $scope.showAlarm = false;
       $scope.alarmTime = null;
       $scope.modalOpen = false;
+      $interval.cancel($scope.soundAlarmPromise);
     }
 
     $scope.setAlarm = function(){

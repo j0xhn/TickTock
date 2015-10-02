@@ -1,10 +1,10 @@
 <div class="tt-centered-wrapper" ng-class="{alarm: showAlarm}">
 
   <div class="tt-clock">
-    <clock></clock>
+    <clock ng-class='{pulse: showAlarm}'></clock>
     <div class="tt-set-alarm-cta">
       <p ng-click="showModal()" ng-if="!showAlarm && !alarmTime"><span class="glyphicon glyphicon-time"></span> set alarm</p>
-      <p ng-click="resetAlarm()" ng-if="showAlarm">reset</p>
+      <p ng-click="resetAlarm()" ng-if="showAlarm"><span class="glyphicon glyphicon-remove"></span> clear</p>
       <p ng-if="alarmTime">
         alarm set to <span class="pointer underline" ng-click="showModal()">{{ alarmTime | date:'h:mm a'}}
         <span class="glyphicon glyphicon-edit"></span>
@@ -16,10 +16,10 @@
   <div class="tt-modal-backdrop" ng-class="{open:modalOpen}">
     <div class="tt-modal">
       <span class="glyphicon glyphicon-remove" ng-click="modalOpen = false;"></span>
-      <h2>Set Alarm</h2>
+      <h2>Select Time</h2>
       <timepicker ng-model="alarmTime" class="tt-timepicker"></timepicker>
-      <button class="btn btn-disabled" ng-click="resetAlarm()">Clear</button>
       <button class="btn btn-success" ng-click="setAlarm();">Set Alarm</button>
+      <p class="o8 underline pointer text-gray" ng-click="resetAlarm()">clear</p>
     </div>
   </div>
 
