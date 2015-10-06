@@ -41,3 +41,30 @@ clock { display: block; }
     display: inline;
   }
 }
+
+/*
+==============================================
+RESPONSIVE
+==============================================
+*/
+
+@media only screen and (min-width: $tt-sm) {
+  .tt-clock{
+    h1 { font-size: 120px; }
+    & + span { font-size: 16px; }
+  }
+  .tt-set-alarm-cta{
+    font-size: 16px;
+    .glyphicon {
+      font-size: 14px;
+    }
+  }
+}
+
+
+@media only screen and (min-width: $tt-md) {
+  .tt-clock{
+    h1 { font-size: 180px; }
+    & + span { font-size: 20px; }
+  }
+}

@@ -1,14 +1,17 @@
 # TickTock
 
 This project was generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1 as a way to set an alarm for yourself.  Good use is in a pomodoro application or just
-when you're trying to not waste so much time on Facebook :)
+version 0.12.1 as a way to set an alarm for yourself.  Good use is if you're following a pomodoro-type work schedule, or 
+when you're trying to not waste too much time on Facebook :)
+
+To view a running version of this project visit: `http://johndangerstorey.github.io/TickTock/`
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Fork or clone this repo and run `npm install && bower install` then run `grunt serve` for viewing locally and `grunt` for building dist.
 
 ### TODO
 - have user input a message that appears on the screen during their alarm
-- change background color according to the time of day
-- clean up timepicker modal - perhaps use a different style, don't much like the way it came pre-packaged
+- change background color according to the time of day (slight gradient from night dark indigo, to day blue, sunset orange back to indigo night)
+- clean up timepicker modal and drop standard bootstrap inputs, buttons, etc.. -- perhaps use a different way all together -- would need to talk to users and others about how they like to interact 
+with time pickers.

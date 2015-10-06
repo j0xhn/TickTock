@@ -2,6 +2,8 @@
 $tt-gray: #666;
 $tt-light-gray: #CCC;
 $tt-blue: #009ACD;
+$tt-sm: 600px;
+$tt-md: 1000px;
 
 // short hand
 .underline  { text-decoration: underline;}
@@ -72,11 +74,9 @@ $tt-blue: #009ACD;
   }
 }
 
-// animations
-
 /*
 ==============================================
-pulse
+animation - pulse
 ==============================================
 */
 
@@ -121,3 +121,18 @@ pulse
   }
 }
 
+
+/*
+==============================================
+RESPONSIVE
+==============================================
+*/
+
+@media only screen and (min-width: $tt-sm) {
+  .tt-modal-backdrop .tt-modal { width: 360px; }
+}
+
+
+@media only screen and (min-width: $tt-md) {
+  .tt-modal-backdrop .tt-modal { width: 400px; }
+}

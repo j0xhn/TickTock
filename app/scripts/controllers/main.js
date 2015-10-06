@@ -10,19 +10,9 @@
 angular.module('clockularApp')
   .controller('MainCtrl', function ($scope, $interval) {
     var ttPrivateActions = {};
+    var audio =  new Audio('../../audio/sounds-958-thin.mp3');
 
-    // sound
-    ttPrivateActions.soundAlarm = function() {
-      var audio = new Audio('http://www.oringz.com/oringz-uploads/sounds-958-thin.mp3');
-      audio.play();
-    };
-
-    // toggle alarm
-    ttPrivateActions.toggleAlarm = function(){
-      $scope.showAlarm = !$scope.showAlarm;
-    }
-
-    // ticking clock
+    // define private functions
     ttPrivateActions.tick = function() {
       $scope.clock = new Date();
       if($scope.alarmTime){
@@ -42,26 +32,36 @@ angular.module('clockularApp')
           $scope.alarmTime = null;
         }
       }
-    }
+    };
 
-    // commence the ticking!
-    ttPrivateActions.tick();
-    $interval(ttPrivateActions.tick, 1000);
+    ttPrivateActions.soundAlarm = function() {
+      audio.play();
+    };
 
-    // clear alarm
+    ttPrivateActions.toggleAlarm = function(){
+      $scope.showAlarm = !$scope.showAlarm;
+    };
+
+    // define public functions
     $scope.resetAlarm = function() {
       $scope.showAlarm = false;
       $scope.alarmTime = null;
       $scope.modalOpen = false;
       $interval.cancel($scope.soundAlarmPromise);
-    }
+    };
 
     $scope.setAlarm = function(){
+      // refactor: alarm actually already set when you are picking time... should be here
       $scope.modalOpen = false;
-    }
+    };
 
     $scope.showModal = function(){
       $scope.modalOpen = true;
-    }
+    };
+
+
+    // commence the ticking!
+    ttPrivateActions.tick();
+    $interval(ttPrivateActions.tick, 1000);
 
   });
