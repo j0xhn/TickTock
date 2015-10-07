@@ -8,7 +8,7 @@ To view a running version of this project visit: [johndangerstorey.github.io/Tic
 
 ## Build & development
 
-Fork or clone this repo and run `npm install && bower install` then run `grunt serve` for viewing locally and `grunt` for building dist.
+Fork or clone this repo and run `npm install && bower install` then run `grunt serve` for viewing locally and `grunt build` for building dist.
 
 ### TODO
 - have user input a message that appears on the screen during their alarm
