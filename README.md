@@ -4,7 +4,7 @@ This project was generated with [yo angular generator](https://github.com/yeoman
 version 0.12.1 as a way to set an alarm for yourself.  Good use is if you're following a pomodoro-type work schedule, or 
 when you're trying to not waste too much time on Facebook :)
 
-To view a running version of this project visit: `[http://johndangerstorey.github.io/TickTock/](http://johndangerstorey.github.io/TickTock/)`
+To view a running version of this project visit: [johndangerstorey.github.io/TickTock/](http://johndangerstorey.github.io/TickTock/)
 
 ## Build & development
 
